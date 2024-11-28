@@ -1,0 +1,24 @@
+
+<div class="card">
+  <div class="card-header">
+    Voting Table
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Likes</th>
+          <th>Dislikes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let line of lines">
+          <td>{{ line.item }}</td>
+          <td>{{ line.likes }}</td>
+          <td>{{ line.dislikes }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

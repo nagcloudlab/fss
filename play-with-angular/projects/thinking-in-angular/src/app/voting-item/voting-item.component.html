@@ -1,0 +1,20 @@
+
+
+<div class="card">
+  <div class="card-body">
+    <div class="">Voting Item</div>
+    <hr />
+    <div class="d-flex justify-content-between">
+      <div class="display-4">{{ item }}</div>
+    </div>
+    <hr/>
+    <div>
+      <button class="btn btn-primary" (click)="handleLikeVote($event)">
+        <i class="fa fa-thumbs-up"></i>
+      </button>
+      <button class="btn btn-danger" (click)="handleDislikeVote($event)">
+        <i class="fa fa-thumbs-down"></i>
+      </button>
+    </div>
+  </div>
+</div>

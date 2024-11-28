@@ -20,14 +20,14 @@ export class AppComponent {
       image: 'assets/Laptop.png',
       isAvailable: true,
     },
-    // {
-    //   id: 2,
-    //   name: 'Mobile',
-    //   price: 500,
-    //   description: 'This is a mobile',
-    //   image: 'assets/Mobile.png',
-    //   isAvailable: true,
-    // },
+    {
+      id: 2,
+      name: 'Mobile',
+      price: 500,
+      description: 'This is a mobile',
+      image: 'assets/Mobile.png',
+      isAvailable: true,
+    },
   ];
 
   addToCart(event: MouseEvent) {
