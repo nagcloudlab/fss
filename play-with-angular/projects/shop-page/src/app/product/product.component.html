@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-3">
+    <img [src]="product.image" class="img-fluid" />
+  </div>
+  <div class="col-9">
+    <div>{{ product.name }}</div>
+    <div>{{ product.price }}</div>
+    <button
+      [disabled]="!product.isAvailable"
+      (click)="addToCart($event)"
+      class="btn btn-primary"
+    >
+      Add to cart
+    </button>
+    <ul class="mt-3 nav nav-tabs">
+      <li class="nav-item">
+        <a
+          (click)="handleTabChange($event, 1)"
+          [ngClass]="{ 'nav-link': true, active: isTabSelected(1) }"
+          href="/"
+        >Description</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          (click)="handleTabChange($event, 2)"
+          [ngClass]="{ 'nav-link': true, active: isTabSelected(2) }"
+          href="/"
+        >Specification</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          (click)="handleTabChange($event, 3)"
+          [ngClass]="{ 'nav-link': true, active: isTabSelected(3) }"
+          href="/"
+        >Reviews</a
+        >
+      </li>
+    </ul>
+    <div *ngIf="isTabSelected(1)">{{ product.description }}</div>
+    <div *ngIf="isTabSelected(2)">Not Yet</div>
+    <div *ngIf="isTabSelected(3)">None Yet</div>
+  </div>
+</div>
