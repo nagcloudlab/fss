@@ -1,0 +1,35 @@
+
+
+<div class="card">
+  <div class="card-header">
+    <div *ngIf="!isHeaderContentGiven">
+      Cart
+    </div>
+    <div *ngIf="isHeaderContentGiven">
+      <ng-content  select=".h"></ng-content>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let cartLine of cart">
+        <td>{{ cartLine.product.name }}</td>
+        <td>{{ cartLine.product.price  }}</td>
+        <td>{{ cartLine.quantity }}</td>
+        <td>{{ cartLine.product.price * cartLine.quantity }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer" #footer>
+    <ng-content select=".f"></ng-content>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {CommonModule, NgClass, NgForOf, NgIf} from "@angular/common";
 import {ProductComponent} from '../product/product.component';
 
@@ -13,6 +13,8 @@ import {ProductComponent} from '../product/product.component';
 })
 export class ProductListComponent {
 
+  @Output()
+  buy: EventEmitter<any> = new EventEmitter();
 
   products: any = [
     {
@@ -33,6 +35,8 @@ export class ProductListComponent {
     },
   ];
 
-
+  handleBuy(event:any) {
+    this.buy.emit(event);
+  }
 
 }

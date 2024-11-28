@@ -7,7 +7,7 @@
     <div>{{ product.price }}</div>
     <button
       [disabled]="!product.isAvailable"
-      (click)="addToCart($event)"
+      (click)="handleBuy($event)"
       class="btn btn-primary"
     >
       Add to cart

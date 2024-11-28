@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule, NgIf} from '@angular/common';
 
 @Component({
@@ -14,6 +14,9 @@ export class ProductComponent {
   @Input()
   product:any={}
 
+  @Output()
+  buy: EventEmitter<any> = new EventEmitter();
+
   currentTab: number = 1;
 
 
@@ -25,8 +28,10 @@ export class ProductComponent {
     return this.currentTab === tabIndex;
   }
 
-  addToCart(event: MouseEvent) {
-    console.log('Product added to cart', event);
+  handleBuy(event: MouseEvent) {
+    this.buy.emit({
+      product: this.product
+    });
   }
 
 }
