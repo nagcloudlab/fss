@@ -3,10 +3,18 @@ import { CommonModule, NgIf } from '@angular/common';
 import { HighlightDirective } from '../highlight.directive';
 import { DiscountPipe } from '../discount.pipe';
 import { CartService } from '../cart.service';
+import { ReviewComponent } from '../review/review.component';
+import { ReviewFormComponent } from '../review-form/review-form.component';
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule, HighlightDirective, DiscountPipe],
+  imports: [
+    CommonModule,
+    HighlightDirective,
+    DiscountPipe,
+    ReviewComponent,
+    ReviewFormComponent,
+  ],
   // providers: [CartService],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
@@ -14,9 +22,22 @@ import { CartService } from '../cart.service';
 export class ProductComponent {
   @Input()
   product: any = {};
+
+  reviews: any[] = [
+    {
+      author: 'who1',
+      stars: 5,
+      body: 'sample review1',
+    },
+    {
+      author: 'who2',
+      stars: 1,
+      body: 'sample review2',
+    },
+  ];
+
   // @Output()
   // buy: EventEmitter<any> = new EventEmitter();
-
   //private cartService: CartService;
 
   currentTab: number = 1;
@@ -24,6 +45,11 @@ export class ProductComponent {
   constructor(private cartService: CartService) {
     //this.cartService = new CartService();
     //this.cartService = cartService;
+  }
+
+  handleNewReview(review: any) {
+    // api call
+    this.reviews = [review, ...this.reviews];
   }
 
   handleTabChange(event: MouseEvent, tabIndex: number) {

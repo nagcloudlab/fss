@@ -49,6 +49,12 @@
     </ul>
     <div *ngIf="isTabSelected(1)">{{ product.description }}</div>
     <div *ngIf="isTabSelected(2)">Not Yet</div>
-    <div *ngIf="isTabSelected(3)">None Yet</div>
+    <div *ngIf="isTabSelected(3)">
+      <div *ngFor="let review of reviews">
+        <app-review [review]="review"></app-review>
+      </div>
+      <hr />
+      <app-review-form (newRev)="handleNewReview($event)"></app-review-form>
+    </div>
   </div>
 </div>
