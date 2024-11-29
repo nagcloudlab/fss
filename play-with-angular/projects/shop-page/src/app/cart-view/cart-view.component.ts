@@ -76,6 +76,6 @@ export class CartViewComponent
   }
   ngAfterViewInit() {
     // component's DOM elements are initialized
-    this.footerElement.nativeElement.style.backgroundColor = 'yellow';
+    // this.footerElement.nativeElement.style.backgroundColor = 'yellow';
   }
 }

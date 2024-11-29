@@ -15,6 +15,14 @@ export class CartBadgeComponent {
 
   ngOnInit() {
     console.log('CartBadgeComponent::ngOnInit');
-    this.count = this.cartService.getCartCount();
+    //this.count = this.cartService.getCartCount();
+    this.cartService.cartStream.subscribe((cart) => {
+      this.count = cart.length;
+    });
+  }
+
+  ngOnDestroy() {
+    console.log('CartBadgeComponent::ngOnDestroy');
+    // unsubscribe the subscription
   }
 }
