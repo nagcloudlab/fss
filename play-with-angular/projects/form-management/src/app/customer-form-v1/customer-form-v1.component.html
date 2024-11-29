@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-6">
+    <hr />
+    <div>Form Group</div>
+    <hr />
+    <pre>
+        is pristine: {{ cf.pristine }}
+        is dirty: {{ cf.dirty }}
+        is untouched: {{ cf.untouched }}
+        is touched: {{ cf.touched }}
+        is valid: {{ cf.valid }}
+        is invalid: {{ cf.invalid }}
+    </pre>
+    <hr />
+    <div>Form Control ( e.g LastName )</div>
+    <hr />
+    <pre>
+        is Pristine : {{ cf.controls["lastName"]?.pristine }}
+        is Dirty : {{ cf.controls["lastName"]?.dirty }}
+        is Untouched : {{ cf.controls["lastName"]?.untouched }}
+        is Touched : {{ cf.controls["lastName"]?.touched }}
+        is Valid : {{ cf.controls["lastName"]?.valid }}
+        is Invalid : {{ cf.controls["lastName"]?.invalid }}
+    </pre>
+    <hr />
+    <div>Form Model</div>
+    <hr />
+    <pre>
+        {{ cf.value | json }}
+    </pre>
+    <hr />
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <div class="card-header">New Customer</div>
+      <div class="card-body">
+        <form #cf="ngForm" (submit)="handleSubmit($event, cf)">
+          <div class="form-group">
+            <label for="name">First Name</label>
+            <input
+              class="form-control"
+              [(ngModel)]="customerModel.firstName"
+              name="firstName"
+              required
+            />
+            <div
+              class="text text-danger"
+              *ngIf="cf.controls['firstName']?.touched && cf.controls['firstName']?.errors?.['required']"
+            >
+              First Name is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name">LastName Name</label>
+            <input
+              class="form-control"
+              [(ngModel)]="customerModel.lastName"
+              name="lastName"
+            />
+          </div>
+          <hr />
+          <button
+            type="button"
+            (click)="loadCustomer()"
+            class="btn btn-warning"
+          >
+            Load</button
+          >&nbsp;
+          <button class="btn btn-primary">Save</button>
+          <hr />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

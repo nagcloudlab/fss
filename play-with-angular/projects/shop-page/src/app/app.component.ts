@@ -13,7 +13,6 @@ import { CartService } from './cart.service';
     CommonModule,
     NavbarComponent,
     ProductListComponent,
-    CartBadgeComponent,
     CartViewComponent,
   ],
   providers: [CartService],
