@@ -1,24 +1,21 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {CommonModule, NgIf} from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule, NgIf } from '@angular/common';
+import { HighlightDirective } from '../highlight.directive';
 
 @Component({
   selector: 'app-product',
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule, HighlightDirective],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css'
+  styleUrl: './product.component.css',
 })
 export class ProductComponent {
-
   @Input()
-  product:any={}
+  product: any = {};
 
   @Output()
   buy: EventEmitter<any> = new EventEmitter();
 
   currentTab: number = 1;
-
 
   handleTabChange(event: MouseEvent, tabIndex: number) {
     event.preventDefault();
@@ -30,8 +27,7 @@ export class ProductComponent {
 
   handleBuy(event: MouseEvent) {
     this.buy.emit({
-      product: this.product
+      product: this.product,
     });
   }
-
 }

@@ -1,31 +1,27 @@
-
-
 <div class="card">
   <div class="card-header">
-    <div *ngIf="!isHeaderContentGiven">
-      Cart
-    </div>
+    <div *ngIf="!isHeaderContentGiven">Cart</div>
     <div *ngIf="isHeaderContentGiven">
-      <ng-content  select=".h"></ng-content>
+      <ng-content select=".h"></ng-content>
     </div>
   </div>
   <div class="card-body">
-    <table class="table">
+    <table class="">
       <thead>
-      <tr>
-        <th>Item</th>
-        <th>Price</th>
-        <th>Qty</th>
-        <th>Total</th>
-      </tr>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Total</th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let cartLine of cart">
-        <td>{{ cartLine.product.name }}</td>
-        <td>{{ cartLine.product.price  }}</td>
-        <td>{{ cartLine.quantity }}</td>
-        <td>{{ cartLine.product.price * cartLine.quantity }}</td>
-      </tr>
+        <tr *ngFor="let cartLine of cart" appHighlight="tomato">
+          <td>{{ cartLine.product.name }}</td>
+          <td>{{ cartLine.product.price }}</td>
+          <td>{{ cartLine.quantity }}</td>
+          <td>{{ cartLine.product.price * cartLine.quantity }}</td>
+        </tr>
       </tbody>
     </table>
   </div>

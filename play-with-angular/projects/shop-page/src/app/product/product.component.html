@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" appHighlight="#DEF">
   <div class="col-3">
     <img [src]="product.image" class="img-fluid" />
   </div>
@@ -18,7 +18,7 @@
           (click)="handleTabChange($event, 1)"
           [ngClass]="{ 'nav-link': true, active: isTabSelected(1) }"
           href="/"
-        >Description</a
+          >Description</a
         >
       </li>
       <li class="nav-item">
@@ -26,7 +26,7 @@
           (click)="handleTabChange($event, 2)"
           [ngClass]="{ 'nav-link': true, active: isTabSelected(2) }"
           href="/"
-        >Specification</a
+          >Specification</a
         >
       </li>
       <li class="nav-item">
@@ -34,7 +34,7 @@
           (click)="handleTabChange($event, 3)"
           [ngClass]="{ 'nav-link': true, active: isTabSelected(3) }"
           href="/"
-        >Reviews</a
+          >Reviews</a
         >
       </li>
     </ul>
