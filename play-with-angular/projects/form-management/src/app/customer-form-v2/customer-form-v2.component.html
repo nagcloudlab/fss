@@ -1,0 +1,122 @@
+<div class="row">
+  <div class="col-6">
+    <hr />
+    <div>Form Group</div>
+    <hr />
+    <pre>
+        is pristine: {{ cf.pristine }}
+        is dirty: {{ cf.dirty }}
+        is untouched: {{ cf.untouched }}
+        is touched: {{ cf.touched }}
+        is valid: {{ cf.valid }}
+        is invalid: {{ cf.invalid }}
+    </pre>
+    <hr />
+    <div>Form Control ( e.g LastName )</div>
+    <hr />
+    <pre>
+        is Pristine : {{ cf.controls["lastName"]?.pristine }}
+        is Dirty : {{ cf.controls["lastName"]?.dirty }}
+        is Untouched : {{ cf.controls["lastName"]?.untouched }}
+        is Touched : {{ cf.controls["lastName"]?.touched }}
+        is Valid : {{ cf.controls["lastName"]?.valid }}
+        is Invalid : {{ cf.controls["lastName"]?.invalid }}
+    </pre>
+    <hr />
+    <div>Form Model</div>
+    <hr />
+    <pre>
+        {{ cf.value | json }}
+    </pre>
+    <hr />
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <div class="card-header">New Customer</div>
+      <div class="card-body">
+        <form [formGroup]="cf" (submit)="handleSubmit($event)">
+          <div class="form-group">
+            <label for="name">First Name</label>
+            <input class="form-control" formControlName="firstName" />
+          </div>
+
+          <div class="form-group">
+            <label for="name">LastName Name</label>
+            <input formControlName="lastName" class="form-control" />
+            <div class="text text-danger">
+              {{ errors["lastName"] }}
+            </div>
+          </div>
+
+          <ng-container formGroupName="emailGroup">
+            <div class="form-group">
+              <label for="name">Email</label>
+              <input formControlName="email" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="name">Confirm Email</label>
+              <input formControlName="confirmEmail" class="form-control" />
+            </div>
+          </ng-container>
+
+          <div class="form-group">
+            <label for="name">Phone</label>
+            <input formControlName="phone" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Notification</label>
+            <select formControlName="notification" class="form-control">
+              <option value="email">Email</option>
+              <option value="phone">Phone</option>
+            </select>
+          </div>
+          <hr />
+          <button
+            type="button"
+            (click)="handleNewAddress()"
+            class="btn btn-dark"
+          >
+            <i class="fa fa-plus"></i>
+          </button>
+          <hr />
+          <div formArrayName="addressArray">
+            <div
+              class="card"
+              *ngFor="let address of addressArray.controls; let i = index"
+            >
+              <div class="card-header">
+                Address
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="removeAddress(i)"
+                >
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <div class="card-body">
+                <div [formGroupName]="i">
+                  <div class="form-group">
+                    <label for="name">Street</label>
+                    <input class="form-control" formControlName="street" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">City</label>
+                    <input class="form-control" formControlName="city" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <button (click)="handleLoadCutomer()" class="btn btn-warning">
+            Load
+          </button>
+          <button class="btn btn-primary">Save</button>
+          <hr />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
