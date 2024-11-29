@@ -1,17 +1,18 @@
 <div class="container">
   <app-navbar [title]="title"></app-navbar>
   <hr />
-  <app-cart-badge [count]="cart.length"></app-cart-badge>
+  <app-cart-badge></app-cart-badge>
   <hr />
-  <button class="btn btn-danger" (click)="handleToggleCart()">Toggle Cart</button>
-  <hr/>
-  <app-cart-view *ngIf="isCartVisible"
-                 [cart]="cart">
-<!--   <div class="display-6 h" #header>-->
-<!--     Cart view-->
-<!--   </div>-->
+  <button class="btn btn-danger" (click)="handleToggleCart()">
+    Toggle Cart
+  </button>
+  <hr />
+  <app-cart-view *ngIf="isCartVisible">
+    <!--   <div class="display-6 h" #header>-->
+    <!--     Cart view-->
+    <!--   </div>-->
     <div class="f">cart footer</div>
   </app-cart-view>
-  <hr/>
-  <app-product-list (buy)="handleBuy($event)"></app-product-list>
+  <hr />
+  <app-product-list></app-product-list>
 </div>

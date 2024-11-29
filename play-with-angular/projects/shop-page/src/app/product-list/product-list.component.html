@@ -4,7 +4,7 @@
       class="list-group-item"
       *ngFor="let product of products | slice : 0 : 10"
     >
-      <app-product [product]="product" (buy)="handleBuy($event)"></app-product>
+      <app-product [product]="product"></app-product>
     </div>
   </div>
 </div>

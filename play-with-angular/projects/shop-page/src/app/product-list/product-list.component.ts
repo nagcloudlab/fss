@@ -1,16 +1,18 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule, NgClass, NgForOf, NgIf } from '@angular/common';
 import { ProductComponent } from '../product/product.component';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-list',
   imports: [CommonModule, ProductComponent],
+  // providers: [CartService],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
 export class ProductListComponent {
-  @Output()
-  buy: EventEmitter<any> = new EventEmitter();
+  // @Output()
+  // buy: EventEmitter<any> = new EventEmitter();
 
   products: any = [
     {
@@ -36,7 +38,7 @@ export class ProductListComponent {
     },
   ];
 
-  handleBuy(event: any) {
-    this.buy.emit(event);
-  }
+  // handleBuy(event: any) {
+  //   this.buy.emit(event);
+  // }
 }

@@ -10,7 +10,7 @@ export class HighlightDirective {
   highlightColor = 'yellow';
 
   constructor(private ele: ElementRef) {
-    console.log(this.ele);
+    // console.log(this.ele);
   }
 
   ngOnInit() {

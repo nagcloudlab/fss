@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { CommonModule, NgForOf } from '@angular/common';
 import { HighlightDirective } from '../highlight.directive';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-cart-view',
@@ -23,7 +24,7 @@ import { HighlightDirective } from '../highlight.directive';
 export class CartViewComponent
   implements OnChanges, OnInit, OnDestroy, AfterContentInit, AfterViewInit
 {
-  @Input()
+  //@Input()
   cart: any[] = [];
 
   @ContentChild('header')
@@ -34,7 +35,7 @@ export class CartViewComponent
 
   isHeaderContentGiven = false;
 
-  constructor() {
+  constructor(private cartService: CartService) {
     console.log('CartViewComponent::constructor');
     // why we  need ?
     // any one-time initialization
@@ -53,6 +54,7 @@ export class CartViewComponent
     // to perform any initialization that requires access to input properties
     // e.g. to make an HTTP request to fetch data
     // subscribe to an observable streams
+    this.cart = this.cartService.getCart();
   }
 
   ngOnDestroy() {
