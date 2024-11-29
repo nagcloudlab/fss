@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="card-body">
-    <table class="">
+    <table class="table">
       <thead>
         <tr>
           <th>Item</th>
@@ -18,9 +18,11 @@
       <tbody>
         <tr *ngFor="let cartLine of cart" appHighlight="tomato">
           <td>{{ cartLine.product.name }}</td>
-          <td>{{ cartLine.product.price }}</td>
+          <td>{{ cartLine.product.price | currency : "INR" }}</td>
           <td>{{ cartLine.quantity }}</td>
-          <td>{{ cartLine.product.price * cartLine.quantity }}</td>
+          <td>
+            {{ cartLine.product.price * cartLine.quantity | currency : "INR" }}
+          </td>
         </tr>
       </tbody>
     </table>

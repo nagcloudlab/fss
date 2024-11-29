@@ -1,18 +1,14 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {CommonModule, NgClass, NgForOf, NgIf} from "@angular/common";
-import {ProductComponent} from '../product/product.component';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { CommonModule, NgClass, NgForOf, NgIf } from '@angular/common';
+import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-product-list',
-  imports: [
-    CommonModule,
-    ProductComponent
-  ],
+  imports: [CommonModule, ProductComponent],
   templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css'
+  styleUrl: './product-list.component.css',
 })
 export class ProductListComponent {
-
   @Output()
   buy: EventEmitter<any> = new EventEmitter();
 
@@ -21,6 +17,9 @@ export class ProductListComponent {
       id: 1,
       name: 'Laptop',
       price: 1000,
+      discountPercentage: 10,
+      currencyCode: 'INR',
+      makeDate: Date.now(),
       description: 'This is a laptop',
       image: 'assets/Laptop.png',
       isAvailable: true,
@@ -29,14 +28,15 @@ export class ProductListComponent {
       id: 2,
       name: 'Mobile',
       price: 500,
+      discountPercentage: 0,
+      makeDate: Date.now(),
       description: 'This is a mobile',
       image: 'assets/Mobile.png',
       isAvailable: true,
     },
   ];
 
-  handleBuy(event:any) {
+  handleBuy(event: any) {
     this.buy.emit(event);
   }
-
 }

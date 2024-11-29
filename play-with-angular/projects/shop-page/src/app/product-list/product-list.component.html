@@ -1,6 +1,9 @@
 <div class="container">
   <div class="list-group">
-    <div class="list-group-item" *ngFor="let product of products">
+    <div
+      class="list-group-item"
+      *ngFor="let product of products | slice : 0 : 10"
+    >
       <app-product [product]="product" (buy)="handleBuy($event)"></app-product>
     </div>
   </div>

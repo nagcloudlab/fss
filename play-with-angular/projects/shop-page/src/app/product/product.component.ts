@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule, NgIf } from '@angular/common';
 import { HighlightDirective } from '../highlight.directive';
+import { DiscountPipe } from '../discount.pipe';
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule, HighlightDirective],
+  imports: [CommonModule, HighlightDirective, DiscountPipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
 })
