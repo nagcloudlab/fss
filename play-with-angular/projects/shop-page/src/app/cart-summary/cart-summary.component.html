@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header">Cart Summary</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-6">Subtotal</div>
+      <div class="col-6 text-right">{{ 0 | currency }}</div>
+    </div>
+    <div class="row">
+      <div class="col-6">Shipping</div>
+      <div class="col-6 text">
+        <select class="form-control">
+          <option value="0">Free</option>
+          <option value="5">Express (5$)</option>
+        </select>
+  </div>
+</div>
+

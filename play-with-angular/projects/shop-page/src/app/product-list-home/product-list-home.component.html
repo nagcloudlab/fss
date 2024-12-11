@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <div class="text mb-4">
+    <!--    <h1 class="display-5">Product List</h1>-->
+    <p class="text-muted">Browse our wide range of products.</p>
+  </div>
+  <hr />
+  <div class="container mt-4">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="electronics"
+        >Electronics</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="other"
+        >Other</a
+        >
+      </li>
+    </ul>
+    <hr />
+    <!-- Content Display -->
+    <router-outlet></router-outlet>
+  </div>
+</div>
