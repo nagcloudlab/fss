@@ -11,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './product-list.component.css',
 })
 export class ProductListComponent {
-
   // @Output()
   // buy: EventEmitter<any> = new EventEmitter();
 

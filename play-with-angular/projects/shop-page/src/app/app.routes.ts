@@ -25,6 +25,9 @@ export const routes: Routes = [
   {
     path: 'products',
     component: ProductListHomeComponent,
+    data: {
+      title: 'Product List',
+    },
     children: [
       {
         // /products/electronics
@@ -45,6 +48,9 @@ export const routes: Routes = [
     path: 'cart',
     component: CartHomeComponent,
     canActivate: [authGuard],
+    data: {
+      title: 'Cart',
+    },
     // canActivateChild: [],
     children: [
       {
