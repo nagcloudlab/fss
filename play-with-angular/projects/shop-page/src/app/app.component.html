@@ -1,16 +1,15 @@
 <div class="container">
   <app-navbar [title]="title"></app-navbar>
-  <hr />
-  <button class="btn btn-danger" (click)="handleToggleCart()">
-    Toggle Cart
-  </button>
-  <hr />
-  <app-cart-view *ngIf="isCartVisible">
-    <!--   <div class="display-6 h" #header>-->
-    <!--     Cart view-->
-    <!--   </div>-->
-    <div class="f">cart footer</div>
-  </app-cart-view>
-  <hr />
-  <app-product-list></app-product-list>
+
+  <div *ngIf="loading" class="loading-overlay">
+    <div class="text-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p>Loading, please wait...</p>
+    </div>
+  </div>
+
+  <div class="mt-3"></div>
+  <router-outlet></router-outlet>
 </div>

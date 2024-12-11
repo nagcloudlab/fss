@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet} from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CartBadgeComponent } from './cart-badge/cart-badge.component';
@@ -12,8 +12,7 @@ import { CartService } from './cart.service';
   imports: [
     CommonModule,
     NavbarComponent,
-    ProductListComponent,
-    CartViewComponent,
+    RouterOutlet
   ],
   providers: [CartService],
   templateUrl: './app.component.html',
@@ -21,23 +20,23 @@ import { CartService } from './cart.service';
 })
 export class AppComponent {
   title: string = 'Shop-IT';
-  // cart: any[] = [];
-  isCartVisible: boolean = false;
 
-  handleToggleCart() {
-    this.isCartVisible = !this.isCartVisible;
+  loading: boolean = false;
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.loading = true; // Show loading on navigation start
+      } else if (
+        event instanceof NavigationEnd ||
+        event instanceof NavigationCancel ||
+        event instanceof NavigationError
+      ) {
+        this.loading = false; // Hide loading on navigation end or error
+      }
+    });
   }
 
-  // handleBuy(event: any) {
-  //   // mutable
-  //   // this.cart.push({
-  //   //   product: event.product,
-  //   //   quantity:1
-  //   // });
-  //   // immutable
-  //   this.cart = this.cart.concat({
-  //     product: event.product,
-  //     quantity: 1,
-  //   });
-  // }
 }
