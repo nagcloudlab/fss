@@ -26,12 +26,12 @@ export class ProductComponent {
   reviews: any[] = [
     {
       author: 'who1',
-      stars: 5,
+      rating: 5,
       body: 'sample review1',
     },
     {
       author: 'who2',
-      stars: 1,
+      rating: 1,
       body: 'sample review2',
     },
   ];

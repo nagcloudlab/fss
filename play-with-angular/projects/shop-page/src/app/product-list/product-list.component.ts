@@ -1,9 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule, NgClass, NgForOf, NgIf } from '@angular/common';
 import { ProductComponent } from '../product/product.component';
-import { CartService } from '../cart.service';
-import {ActivatedRoute} from '@angular/router';
-import {ProductService} from '../product.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -14,35 +12,57 @@ import {ProductService} from '../product.service';
 })
 export class ProductListComponent {
 
+  // @Output()
+  // buy: EventEmitter<any> = new EventEmitter();
+
   products: any = [];
 
-  constructor(
-    private route:ActivatedRoute,
-    private productService: ProductService,
-  ) {
-  }
+  constructor(private route: ActivatedRoute) {}
+
+  // handleBuy(event: any) {
+  //   this.buy.emit(event);
+  // }
 
   ngOnInit() {
+    //console.log(this.route.snapshot.params);
+    this.route.params.subscribe((params) => {
+      let { category } = params;
+      if (category === 'electronics') {
+        this.products = [
+          //   {
+          //     id: 1,
+          //     name: 'Laptop',
+          //     price: 1000,
+          //     discountPercentage: 10,
+          //     currencyCode: 'INR',
+          //     makeDate: Date.now(),
+          //     description: 'This is a laptop',
+          //     image: 'assets/Laptop.png',
+          //     isAvailable: true,
+          //   },
+          //   {
+          //     id: 2,
+          //     name: 'Mobile',
+          //     price: 500,
+          //     discountPercentage: 0,
+          //     makeDate: Date.now(),
+          //     description: 'This is a mobile',
+          //     image: 'assets/Mobile.png',
+          //     isAvailable: true,
+          //   },
+        ];
+      } else {
+        this.products = [];
+      }
 
-    // way-1
-    //const category=this.route.snapshot.params['category'];
-
-    // way-2
-    // this.route.params.subscribe(params => {
-    //   const category = params['category'];
-    //   this.productService.getProducts(category)
-    //     .subscribe({
-    //       next: (products) => {
-    //         this.products = products;
-    //       }
-    //     })
-    // });
-
-    // way-3
-    this.route.data.subscribe(data => {
-      this.products = data['products'];
+      this.route.data.subscribe({
+        next: (data) => {
+          this.products = data['products'];
+        },
+        error: (error) => {
+          console.log('Error', error);
+        },
+      });
     });
-
   }
-
 }

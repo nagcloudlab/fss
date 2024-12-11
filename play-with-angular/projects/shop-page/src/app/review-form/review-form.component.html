@@ -1,10 +1,11 @@
 <button class="btn btn-dark" (click)="toggle()">
-  {{ isOpen ? "Close" : "Write a review" }}
+  <i class="fa fa-minus" *ngIf="isOpen"></i>
+  <i class="fa fa-plus" *ngIf="!isOpen"></i>
 </button>
 
 <div class="card" *ngIf="isOpen">
   <div class="card-header">
-    <h3>Write a review</h3>
+    New Review
   </div>
   <div class="card-body">
     <form [formGroup]="fg" (submit)="handleSubmit()">
@@ -27,7 +28,7 @@
         ></textarea>
       </div>
       <hr />
-      <button class="btn btn-primary">Submit</button>
+      <button class="btn btn-dark">Submit</button>
       <hr />
     </form>
   </div>

@@ -10,4 +10,8 @@ import { Component, Input } from '@angular/core';
 export class ReviewComponent {
   @Input()
   review: any = {};
+
+  getStars(rating: number): boolean[] {
+    return Array.from({ length: 5 }, (_, i) => i < rating);
+  }
 }

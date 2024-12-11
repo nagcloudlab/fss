@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import {CurrencyPipe} from '@angular/common';
 
 @Component({
   selector: 'app-cart-summary',
-  imports: [
-    CurrencyPipe
-  ],
+  imports: [],
   templateUrl: './cart-summary.component.html',
   styleUrl: './cart-summary.component.css'
 })

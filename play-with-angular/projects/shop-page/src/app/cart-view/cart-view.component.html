@@ -1,6 +1,12 @@
-<div class="card">
+<div class="card" *ngIf="cart.length == 0">
+  <div class="card-body">
+    <p>Your cart is empty.</p>
+  </div>
+</div>
+
+<div class="card" *ngIf="cart.length !== 0">
   <div class="card-header">
-    <div *ngIf="!isHeaderContentGiven">Cart</div>
+    <div *ngIf="!isHeaderContentGiven">Cart View</div>
     <div *ngIf="isHeaderContentGiven">
       <ng-content select=".h"></ng-content>
     </div>
@@ -19,7 +25,21 @@
         <tr *ngFor="let cartLine of cart" appHighlight="tomato">
           <td>{{ cartLine.product.name }}</td>
           <td>{{ cartLine.product.price | currency : "INR" }}</td>
-          <td>{{ cartLine.quantity }}</td>
+          <td>
+            <button
+              class="btn btn-primary btn-sm"
+              (click)="handleIncrease(cartLine.product.id)"
+            >
+              +
+            </button>
+            {{ cartLine.quantity }}
+            <button
+              class="btn btn-primary btn-sm"
+              (click)="handleDecrease(cartLine.product.id)"
+            >
+              -
+            </button>
+          </td>
           <td>
             {{ cartLine.product.price * cartLine.quantity | currency : "INR" }}
           </td>
@@ -28,6 +48,10 @@
     </table>
   </div>
   <div class="card-footer" #footer>
-    <ng-content select=".f"></ng-content>
+<!--    <ng-content select=".f"></ng-content>-->
+   <div class="d-flex justify-content-between">
+     <button class="btn btn-danger" (click)="handleClear()">Clear Cart</button>
+     <button class="btn btn-primary" (click)="handleCheckout()">Checkout</button>
+   </div>
   </div>
 </div>

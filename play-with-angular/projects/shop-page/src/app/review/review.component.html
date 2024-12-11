@@ -1,8 +1,31 @@
-<div class="alert alert-danger">
-  <div class="d-flex justify-content-between">
-    <div>{{ review.author }}</div>
-    <div class="ml-auto">{{ review.stars }} stars</div>
+<div class="container mt-4">
+  <div class="row">
+    <!-- Loop through reviews -->
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <!-- Author and Rating -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="card-title mb-0">{{ review.author }}</div>
+          <div>
+            <!-- Star Rating -->
+            <ng-container
+              *ngFor="let star of getStars(review.rating); let i = index"
+            >
+              <i
+                class="bi"
+                [class.bi-star-fill]="star"
+                [class.bi-star]="!star"
+                style="color: gold"
+              ></i>
+            </ng-container>
+          </div>
+        </div>
+        <hr />
+        <!-- Review Body -->
+        <p class="card-text">
+          {{ review.body }}
+        </p>
+      </div>
+    </div>
   </div>
-  <hr />
-  <div>{{ review.body }}</div>
 </div>

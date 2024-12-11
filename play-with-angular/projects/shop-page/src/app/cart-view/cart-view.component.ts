@@ -11,9 +11,9 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { CommonModule, NgForOf } from '@angular/common';
-import { HighlightDirective } from '../highlight.directive';
-import { CartService } from '../cart.service';
+import {CommonModule, NgForOf} from '@angular/common';
+import {HighlightDirective} from '../highlight.directive';
+import {CartService} from '../cart.service';
 
 @Component({
   selector: 'app-cart-view',
@@ -22,8 +22,8 @@ import { CartService } from '../cart.service';
   styleUrl: './cart-view.component.css',
 })
 export class CartViewComponent
-  implements OnChanges, OnInit, OnDestroy, AfterContentInit, AfterViewInit
-{
+  implements OnChanges, OnInit, OnDestroy, AfterContentInit, AfterViewInit {
+
   //@Input()
   cart: any[] = [];
 
@@ -42,6 +42,15 @@ export class CartViewComponent
     // e.g dependency injection
   }
 
+
+  handleIncrease(productId: number) {
+    this.cartService.increaseOrDecreaseQuantity(productId, 1);
+  }
+
+  handleDecrease(productId: number) {
+    this.cartService.increaseOrDecreaseQuantity(productId, -1);
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     console.log('CartViewComponent::ngOnChanges', changes);
     // why we need ?
@@ -55,6 +64,10 @@ export class CartViewComponent
     // e.g. to make an HTTP request to fetch data
     // subscribe to an observable streams
     this.cart = this.cartService.getCart();
+    this.cartService.cartStream.subscribe((cart) => {
+      this.cart = cart;
+    });
+
   }
 
   ngOnDestroy() {
@@ -74,8 +87,18 @@ export class CartViewComponent
       this.isHeaderContentGiven = true;
     }
   }
+
   ngAfterViewInit() {
     // component's DOM elements are initialized
     // this.footerElement.nativeElement.style.backgroundColor = 'yellow';
   }
+
+  handleClear() {
+    this.cartService.clearCart();
+  }
+
+  handleCheckout() {
+    this.cartService.checkout();
+  }
+
 }

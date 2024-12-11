@@ -1,1 +1,42 @@
-<p>login works!</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-4">Login</h3>
+          <form (submit)="handleSubmit($event)">
+            <!-- Username -->
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                id="username"
+                class="form-control"
+                [(ngModel)]="username"
+                name="username"
+                (ngModelChange)="onInputChange()"
+              />
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                [(ngModel)]="password"
+                name="password"
+                (ngModelChange)="onInputChange()"
+              />
+            </div>
+            <!-- Submit -->
+            <div class="d-grid">
+              <button class="btn btn-primary">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
