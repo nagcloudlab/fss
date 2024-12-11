@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="display-1">
+    {{ title }}
+  </div>
+
+  <hr />
+  <app-nav-bar [userStream]="userStream"></app-nav-bar>
+  <hr />
+
+  <button (click)="handler1($event)">In Zone :{{ count1 }}</button>
+
+  <button (click)="handler2($event)">Outside Zone:{{ count2 }}</button>
+
+  <button (click)="handleBuy1()">Add Cart</button>
+  <button (click)="handleUserAgeChange()">increase user's age</button>
+  <button (click)="handleLogin()">login</button>
+  <button (click)="handleLogout()">logout</button>
+  <hr />
+
+  <app-cart-view [cart]="cart"></app-cart-view>
+  <br />
+  <app-user-view [user]="user"></app-user-view>
+</div>

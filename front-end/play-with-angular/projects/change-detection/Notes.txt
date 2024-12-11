@@ -1,0 +1,79 @@
+
+
+how javascript program execute in browser envi?
+----------------------------------------------
+
+browser e.g chrome
+------------------
+
+1. javascript-engine ( e.g V8 ) : based on ecmascript-spec
+    - single-call-stack
+    - heap
+2. Web-Api(s) : based on w3c spec
+3. event/message/callback queue
+4. event-loop
+
+    
+------------------------------------------------
+
+- single-threaded process
+- concurrent execution is possible due to non-blocking I/O
+
+------------------------------------------------
+
+UI
+    - state ( changes over time )
+    - view  aka DOM ( in browser ) ( render state )
+
+------------------------------------------------    
+
+What causes change with state?
+
+    1. Events - click, submit, …
+    2. XHR - Fetching data from a remote server
+    3. Timers - setTimeout(), setInterval()
+
+i.e every async operation cause state change
+
+------------------------------------------------    
+
+
+=> prev state
+    - async operation
+=> new-state
+
+ compair new-state with prev-state
+    - if different, update view ( DOM )    
+
+------------------------------------------------
+
+Angular team, made new lib => Zone.js
+to handle async operations
+
+------------------------------------------------
+
+Summary
+-------
+
+
+- by default, angular runs all async operations in Zone,
+that trigger change detection
+
+to boost performance
+---------------------
+
+-> use ChangeDetectionStrategy.OnPush, if component
+    depends on immutable input props
+
+-> cd.markForCheck() : to trigger change detection
+    for a component and its ancestors
+
+-> cd.detectChanges() : to trigger change detection
+    for a component and its children    
+
+-> cd.detach() : to detach a component from cd tree
+
+-> cd.attach() : to attach a component to cd tree
+
+------------------------------------------------
+
