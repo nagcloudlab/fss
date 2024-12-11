@@ -1,29 +1,12 @@
 // import { Injectable } from '@angular/core';
 
-import {BehaviorSubject} from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 // @Injectable({
 //   providedIn: 'root'
 // })
 export class CartService {
-  private cart: Array<any> = [
-    {
-      product: {
-        id: 1,
-        name: 'Laptop',
-        price: 10000.00,
-      },
-      quantity: 1,
-    },
-    {
-      product: {
-        id: 2,
-        name: 'Mobile',
-        price: 1000.00,
-      },
-      quantity: 1,
-    },
-  ];
+  private cart: Array<any> = [];
   public cartStream = new BehaviorSubject<Array<any>>(this.cart);
 
   constructor() {
@@ -35,7 +18,8 @@ export class CartService {
     if (existingProduct) {
       existingProduct.quantity += 1;
     } else {
-      this.cart.push({product, quantity: 1});
+      this.cart.push({ product, quantity: 1 });
+      this.cartStream.next(this.cart);
     }
   }
 
