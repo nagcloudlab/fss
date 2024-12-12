@@ -7,5 +7,5 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ReviewRepository extends CrudRepository<ReviewEntity, Integer> {
 
   @Transactional(readOnly = true)
-  List<ReviewEntity> findByProductId(int productId);
+  List<ReviewEntity> findByProductId(int productId); // Non-Blocking IO
 }

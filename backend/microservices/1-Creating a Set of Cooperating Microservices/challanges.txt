@@ -1,0 +1,15 @@
+
+
+- need isolated environment for each service ( docker| podman)
+- need service Api documentation ( SpringDoc based swagger )
+- need persistent storage ( SQL or NoSQL) 
+- need async communication between services ( WebClient | Kafka | RabbitMQ)
+- need loose coupling between services on endpoints ( Service Discovery)
+- need gateway for routing ( Zuul | Spring Cloud Gateway)
+- need authentication and authorization ( token -> Oauth2) ( Keycloak)
+- need fault tolerance  ( Resilience4j)
+- need tracing ( Zipkin | Jaeger)
+- need logging ( ELK)
+-> need native build ( GraalVM)
+...
+
