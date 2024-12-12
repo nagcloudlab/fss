@@ -1,15 +1,3 @@
-Angular Notes
--------------
-https://nagcloudlab.notion.site/Angular-Notes-e9e9995eaf3f447fa2f649697f996e9f?pvs=4
 
 
-Component Principles
---------------------
-https://docs.google.com/presentation/d/1NmBXZC3gEfwSP0pfg3XDxzkElWyWXtsUPjeaX_RJZ0Q/edit?usp=sharing
-
-
-Angular code examples
----------------------
-
-https://github.com/nagcloudlab/ng-in-kongs
-https://github.com/nagcloudlab/TSE_angular
+https://nagcloudlab.notion.site/FSS-090e0279109b4c4fa7725f181565df36?pvs=4

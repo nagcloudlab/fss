@@ -1,0 +1,35 @@
+plugins {
+    id 'org.springframework.boot' version '3.0.4'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'java'
+}
+
+group = 'se.magnus.microservices.core.review'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    enabled = false
+}
+
+dependencies {
+    implementation project(':api')
+    implementation project(':util')
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    // To avoid the following error message on Apple silicon (for details, see https://github.com/netty/netty/issues/11693):
+    // Unable to load io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS.
+    implementation group: 'io.netty', name: 'netty-resolver-dns-native-macos', classifier: 'osx-aarch_64'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

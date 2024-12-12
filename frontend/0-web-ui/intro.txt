@@ -1,0 +1,111 @@
+
+UI = data + style + interaction
+Web UI = HTML + CSS + JS
+
+
+why we need js in web page?
+
+using browser's provided Apis,
+we can do any magic on web page.
+
+browser's Apis are w3c recommended
+
+browser-vendors, implement these Apis with native code.
+abstracted to use js objects & functions.
+
+
+using DOM Api
+---------------
+-> to create/retrieve/update/delete HTML elements
+-> to change element's attributes
+-> to change element's style
+-> to change element's inner text
+-> to listen to user's actions/events
+
+using XMLHttpRequest Api / fetch Api
+-----------------------------------
+-> to communicate with server asynchronously
+
+using Timer Api
+---------------
+-> to execute any action on timeout/time-interval
+
+
+
+
+complexities using plain-js with browser Apis
+---------------------------------------------
+
+-  browser compatibility issues
+-  writing more code
+-  performance issues shud handle manually
+-  design issues
+-  memory leaks issues
+-  security issues
+...
+
+legacy solutions:
+----------------
+
+  - server-side page technologies
+    --> jsp, asp, php, ...
+
+
+  limitations od server-side page technologies:
+
+  -> load on server
+  -> latency
+  -> not responsive to end-user
+
+
+modern solutions:
+----------------
+
+  - client-side (browser) page technologies
+
+  how?
+
+  -> using modern browsers & javascript
+  +
+ -> using third-party's js libraries/frameworks
+
+
+ third-party's js libraries/frameworks
+ ------------------------------------
+
+    - jquery ( DOM & XHR utilities )
+
+
+    MVC frameworks
+    --------------
+
+    - backbone.js
+    - knockout.js
+    - ember.js
+    - dojo.js
+    - ext.js from sencha
+    - angular.js
+    ...
+
+    component-based frameworks
+    --------------------------
+    
+    - react.js
+    - angular
+    - vue.js
+
+
+    ------------------------
+
+
+
+
+HTML 
+CSS
+JS / TS
+browser's Apis
+
+third-party's js libraries/frameworks
+
+- react / angular / vue
+
