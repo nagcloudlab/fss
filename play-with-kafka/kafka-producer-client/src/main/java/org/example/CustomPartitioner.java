@@ -1,4 +1,25 @@
 package org.example;
 
-public class CustomPartitioner {
+import org.apache.kafka.clients.producer.Partitioner;
+import org.apache.kafka.common.Cluster;
+
+import java.util.Map;
+
+public class CustomPartitioner implements Partitioner {
+
+    @Override
+    public int partition(String topic, Object okey, byte[] keyBytes, Object value, byte[] valueBytes1, Cluster cluster) {
+        // algm..
+        return 0;
+    }
+
+    @Override
+    public void close() {
+
+    }
+
+    @Override
+    public void configure(Map<String, ?> map) {
+
+    }
 }
