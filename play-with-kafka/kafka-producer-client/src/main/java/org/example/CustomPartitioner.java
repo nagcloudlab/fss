@@ -9,7 +9,6 @@ public class CustomPartitioner implements Partitioner {
 
     @Override
     public int partition(String topic, Object okey, byte[] keyBytes, Object value, byte[] valueBytes1, Cluster cluster) {
-        // algm..
         return 0;
     }
 
