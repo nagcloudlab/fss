@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]': # Apply CORS rules to all routes
+            allowedOrigins:
+              - "http://localhost:4200" # Replace with your Angular app or frontend's origin
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            exposedHeaders:
+              - "Authorization"
+            allowCredentials: true
+      routes:
+        - id: products-service
+          uri: http://localhost:8081/products
+          predicates:
+            - Path=/products
+        - id: review-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/reviews/**

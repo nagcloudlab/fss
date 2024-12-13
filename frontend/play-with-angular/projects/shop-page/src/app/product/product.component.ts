@@ -5,6 +5,7 @@ import { DiscountPipe } from '../discount.pipe';
 import { CartService } from '../cart.service';
 import { ReviewComponent } from '../review/review.component';
 import { ReviewFormComponent } from '../review-form/review-form.component';
+import { ReviewService } from '../review.service';
 
 @Component({
   selector: 'app-product',
@@ -23,18 +24,7 @@ export class ProductComponent {
   @Input()
   product: any = {};
 
-  reviews: any[] = [
-    {
-      author: 'who1',
-      rating: 5,
-      body: 'sample review1',
-    },
-    {
-      author: 'who2',
-      rating: 1,
-      body: 'sample review2',
-    },
-  ];
+  reviews: any[] = [];
 
   // @Output()
   // buy: EventEmitter<any> = new EventEmitter();
@@ -42,7 +32,10 @@ export class ProductComponent {
 
   currentTab: number = 1;
 
-  constructor(private cartService: CartService) {
+  constructor(
+    private cartService: CartService,
+    private reviewService: ReviewService
+  ) {
     //this.cartService = new CartService();
     //this.cartService = cartService;
   }
@@ -55,6 +48,13 @@ export class ProductComponent {
   handleTabChange(event: MouseEvent, tabIndex: number) {
     event.preventDefault();
     this.currentTab = tabIndex;
+    if (this.currentTab === 3) {
+      this.reviewService
+        .getReviews(this.product.id)
+        .subscribe((reviews: any) => {
+          this.reviews = reviews;
+        });
+    }
   }
   isTabSelected(tabIndex: number) {
     return this.currentTab === tabIndex;
