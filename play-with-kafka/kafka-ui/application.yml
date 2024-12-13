@@ -1,0 +1,4 @@
+kafka:
+  clusters:
+    - name: fss-kafka-cluster
+      bootstrapServers: localhost:9092
