@@ -82,9 +82,9 @@ public class ProducerClient {
         KafkaProducer<String,String> producer = new KafkaProducer<>(properties);
         // KafkaTemplate
 
-        String topic="sat-topic";
+        String topic="topic1";
 
-        for (int i = 0; i <Integer.MAX_VALUE; i++) {
+        for (int i = 0; i <10; i++) {
             String value = "Apache Kafka is a distributed event store and stream-processing platform. It is an open-source system developed by the Apache Software Foundation written in Java and Scala. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feed\n"
                     +
                     "Apache Kafka is a distributed event store and stream-processing platform. It is an open-source system developed by the Apache Software Foundation written in Java and Scala. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feed\n"
@@ -98,7 +98,7 @@ public class ProducerClient {
             RecordMetadata recordMetadata=recordMetadataFuture.get();
             // log the metadata with topic, partition, offset , key
             logger.info("topic: "+recordMetadata.topic()+" partition: "+recordMetadata.partition()+" offset: "+recordMetadata.offset());
-            TimeUnit.SECONDS.sleep(1);
+//            TimeUnit.SECONDS.sleep(1);
         }
 
     }

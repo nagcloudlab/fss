@@ -18,19 +18,23 @@ public class ConsumerClient {
 
         Properties properties = new Properties();
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092,localhost:9093,localhost:9094");
-        properties.put(ConsumerConfig.GROUP_ID_CONFIG, "g4");
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG, "g6");
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
-        properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest"); // latest | none
+        properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest"); // latest | none
+
+
+        properties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
+        properties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "5000");
 
         // partition assignment configuration
         properties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, CooperativeStickyAssignor.class.getName());
-        properties.put(ConsumerConfig.GROUP_INSTANCE_ID_CONFIG, "g4_1");
+//        properties.put(ConsumerConfig.GROUP_INSTANCE_ID_CONFIG, "g4_1");
         properties.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "45000");
         properties.put(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, "3000");
 
         KafkaConsumer<String,String> consumer = new KafkaConsumer<>(properties);
-        consumer.subscribe(List.of("sat-topic")); // p0
+        consumer.subscribe(List.of("topic1")); // p0
 
         Runtime.getRuntime().addShutdownHook(new Thread(()->{
             logger.info("stopping consumer");
@@ -46,15 +50,14 @@ public class ConsumerClient {
                   // log topic, partition, offset, key,
                    logger.info("topic={}, partition={}, offset={}, key={}",
                            record.topic(), record.partition(), record.offset(), record.key());
-                   TimeUnit.SECONDS.sleep(2);
+//                   TimeUnit.SECONDS.sleep(2);
                }
-
+               consumer.commitSync();
            }
        } catch (WakeupException e) {
         //..
-       } catch (InterruptedException e) {
-           throw new RuntimeException(e);
-       } finally {
+       }
+       finally {
            logger.info("shutting down");
            consumer.close();
        }

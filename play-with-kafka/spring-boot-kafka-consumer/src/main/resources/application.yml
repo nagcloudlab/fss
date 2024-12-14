@@ -1,0 +1,32 @@
+
+
+server:
+  port: 8282
+
+spring:
+  main:
+    web-application-type: none
+  application:
+    name: transaction-consumer
+  kafka:
+    consumer:
+      group-id: transaction-consumer
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: '*'
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/transactions?useSSL=false&serverTimezone=UTC
+#    username: root
+#    password: root1234
+#  jpa:
+#    database: mysql
+#    generate-ddl: true
+
+debug: false
