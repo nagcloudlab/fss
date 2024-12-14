@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 public class ProducerClient {
 
@@ -17,6 +18,7 @@ public class ProducerClient {
     public static void main(String[] args) throws Exception {
 
         Properties properties = new Properties();
+        
 
 
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
@@ -80,11 +82,9 @@ public class ProducerClient {
         KafkaProducer<String,String> producer = new KafkaProducer<>(properties);
         // KafkaTemplate
 
-        String topic="bar-topic";
+        String topic="sat-topic";
 
-        for (int i = 0; i <1; i++) {
-//            List<String> keys=List.of("foo","bar");
-//            String key=keys.get(i%2);
+        for (int i = 0; i <Integer.MAX_VALUE; i++) {
             String value = "Apache Kafka is a distributed event store and stream-processing platform. It is an open-source system developed by the Apache Software Foundation written in Java and Scala. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feed\n"
                     +
                     "Apache Kafka is a distributed event store and stream-processing platform. It is an open-source system developed by the Apache Software Foundation written in Java and Scala. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feed\n"
@@ -92,13 +92,13 @@ public class ProducerClient {
                     "Apache Kafka is a distributed event store and stream-processing platform. It is an open-source system developed by the Apache Software Foundation written in Java and Scala. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feed\n"
                     +
                     "Apache Kafka is a distributed event store and stream-processing platform. It is an open-source system developed by the Apache Software Foundation write";
-            ProducerRecord<String, String> record = new ProducerRecord<>(topic,0,null,value);
-            Future<RecordMetadata> recordMetadataFuture=producer.send(record);
+            ProducerRecord<String, String> record = new ProducerRecord<>(topic,value);
+            Future<RecordMetadata> recordMetadataFuture=producer.send(record); // write  request
             //..
             RecordMetadata recordMetadata=recordMetadataFuture.get();
             // log the metadata with topic, partition, offset , key
             logger.info("topic: "+recordMetadata.topic()+" partition: "+recordMetadata.partition()+" offset: "+recordMetadata.offset());
-            Thread.sleep(1000);
+            TimeUnit.SECONDS.sleep(1);
         }
 
     }
