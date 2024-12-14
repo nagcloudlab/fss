@@ -10,6 +10,5 @@ https://docs.google.com/presentation/d/125-YxJodOQnGqUKlo6mhRwUxxWbzq7GfmLH5mvvA
 Kafka
 https://docs.google.com/presentation/d/1tIJKyzOJ-rLYSs_qRiQaSNi8iheKSUF9QHGabbJ0cZs/edit?usp=sharing
 
-
 Redis
 https://nagcloudlab.notion.site/Redis-ff777489cfa14c9eb32d0d16f24c1186?pvs=4
